@@ -1,10 +1,12 @@
-from django.urls import path
-
+from django.urls import include, path
+from rest_framework.routers import DefaultRouter
+from .views import ProductsViewSet
 from . import views
+
+router = DefaultRouter()
+router.register('', ProductsViewSet, basename='products') 
 
 app_name = 'products'
 urlpatterns = [
-
-    #This blank '' means polls index page
-    path('', views.index, name='index'),
+    path('', include(router.urls)),
 ]

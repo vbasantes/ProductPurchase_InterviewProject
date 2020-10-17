@@ -14,18 +14,17 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import include, path
+from django.urls import include, path, re_path
 from django.views.generic import RedirectView
-from django.conf import settings
-from django.conf.urls.static import static
+#from django.conf import settings
+#from django.conf.urls.static import static
+from rest_framework import routers
+from products import views
 
 urlpatterns = [
+    # URL route for admin site
     path('admin/', admin.site.urls),
+
+    # URL route for products rest api
     path('products/',  include('products.urls')),
-
-    #Redirect main site to products app
-    path('', RedirectView.as_view(url='products/', permanent=True)),
-
-    #Add URL mapping to serve static files during development
-    #static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 ]
