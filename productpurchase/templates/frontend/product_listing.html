@@ -1,0 +1,28 @@
+{%extends 'base.html' %}
+
+{% block content %}
+
+    <a class="btn btn-secondary btn-sm mb-3" href="{% url 'frontend:index' %}">Back to Landing Page</a>
+    
+    <h1 class="text-center mb-3">Product Listing</h1>
+    {% if products %}
+        {% for product in products %}
+        <div class="card mb-3">
+            <div class="card-body">
+                <span class="lead text-left">{{ product.name}}   </span>                    
+                <a href="{% url 'frontend:product_detail' product.id %}" class="btn btn-primary btn-sm float-right">Product Details</a>        
+             </div>
+        </div>
+        {% endfor %}
+    {% else %}
+        <p> No products available</p>
+    {% endif %}
+
+
+    {% if error_message %}
+    <p class="alert alert-danger">
+        <strong>{{error_message}}</strong>
+    </p>
+    {% endif %}
+
+{% endblock %}

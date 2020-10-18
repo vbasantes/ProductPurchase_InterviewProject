@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+    {% block content %}
+
+    <div class="card text-center">
+        <div class="card-body">
+            <h1>Welcome to the Product Purchasing App</h1>
+            <a class="btn btn-dark" href="{% url 'frontend:product_listing' %}">View Available Products</a>
+        </div>
+    </div>
+
+    {% if error_message %}
+    <p class="alert alert-danger">
+        <strong>{{error_message}}</strong>
+    </p>
+    {% endif %}
+
+{% endblock %}

@@ -20,11 +20,16 @@ from django.views.generic import RedirectView
 #from django.conf.urls.static import static
 from rest_framework import routers
 from products import views
+from frontend import views
 
 urlpatterns = [
     # URL route for admin site
     path('admin/', admin.site.urls),
 
     # URL route for products rest api
-    path('products/',  include('products.urls')),
+    path('products/',  include('products.urls')),                           #Not Versioned
+    #re_path('products/(?P<version>(v1|v2))/', include('products.urls')),   #Versioned
+
+    # URL route for frontend site
+    path('',   include('frontend.urls')),
 ]

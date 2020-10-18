@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <a class="btn btn-secondary btn-sm mb-3" href="{% url 'frontend:product_listing' %}">Back to Product Listing</a>
+    
+    <h1 class="text-center mb-3">Product Detail</h1>
+
+    <h4 class="text-center mb-3">{{ product.name }}</h4>
+    <h4 class="text-center mb-3">{{ product.id }}</h4>
+
+    <a href="{% url 'frontend:product_purchase' product.id %}" class="btn btn-success btn-lg btn-block mt-4">Purchase</a>        
+
+    {% if error_message %}
+    <p class="alert alert-danger">
+        <strong>{{error_message}}</strong>
+    </p>
+    {% endif %}
+
+{% endblock %}
+
