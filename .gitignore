@@ -99,4 +99,7 @@ GitHub.sublime-settings
 !.vscode/launch.json 
 !.vscode/extensions.json 
 .vs/*
+
 .history
+docs/
+fixtures/
