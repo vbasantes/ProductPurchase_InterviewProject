@@ -5,19 +5,50 @@
     <a class="btn btn-secondary btn-sm mb-3" href="{% url 'frontend:index' %}">Back to Landing Page</a>
     
     <h1 class="text-center mb-3">Product Listing</h1>
+
+    <table class="table table-bordered table-hover">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Cost</th>
+            <th scope="col">Code</th>
+            <th scope="col">Details</th>
+          </tr>
+        </thead>
+        <tbody>
+
+        {% if products %}
+            {% for product in products %}
+            <tr>
+                <th scope="row">1</th>
+                <td> {{ product.name }} </td>
+                <td>${{ product.cost }}</td>
+                <td>{{ product.code }}</td>
+                <td><a href="{% url 'frontend:product_detail' product.id %}" class="btn btn-info btn-md">Product Details</a>        </td>
+            </tr>
+            {% endfor %}            
+        {% else %}
+            <p> No products available</p>
+        {% endif %}
+        </tbody>
+    </table>
+
+<!--
     {% if products %}
         {% for product in products %}
         <div class="card mb-3">
-            <div class="card-body">
-                <span class="lead text-left">{{ product.name}}   </span>                    
-                <a href="{% url 'frontend:product_detail' product.id %}" class="btn btn-primary btn-sm float-right">Product Details</a>        
+            <div class="col card-body">
+                <span class="lead col-2">{{ product.name }}   </span>       
+                <span class="lead col-1">${{ product.cost }}   </span>                  
+                <a href="{% url 'frontend:product_detail' product.id %}" class="col-4 btn btn-info btn-sm float-right">Product Details</a>        
              </div>
         </div>
         {% endfor %}
     {% else %}
         <p> No products available</p>
     {% endif %}
-
+-->
 
     {% if error_message %}
     <p class="alert alert-danger">

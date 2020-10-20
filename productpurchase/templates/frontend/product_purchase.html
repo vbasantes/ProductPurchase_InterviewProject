@@ -6,23 +6,13 @@
 
     <h1 class="text-center mb-3">Product Purchase</h1>
 
-    <h4 class="text-center mb-3">{{ product.name }}</h4>
-
-    <form method="post"  action="{% url 'frontend:purchase_complete' product.id %}">
+    <form action="" method="post">
         {% csrf_token %}
+        {{ form.as_p }}
 
-        <div class="form-group">
-            <label for="costumerEmail">Costumer Email</label>
-            <input type="email" class="form-control" id="costumerEmail" aria-describedby="emailHelp" placeholder="Enter Costumer Email">
-        </div>
-        <div class="form-group">
-            <label for="costumerName">Costumer Name</label>
-            <input type="password" class="form-control" id="costumerName" placeholder="Enter Costumer Name">
-        </div>
-        
         <button type="submit" class="btn btn-success btn-lg btn-block mt-4">Place Order</button>
-
-    </form>
+        
+      </form>
 
     {% if error_message %}
     <p class="alert alert-danger">

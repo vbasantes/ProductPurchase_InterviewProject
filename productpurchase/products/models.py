@@ -1,5 +1,4 @@
 from django.db import models
-import uuid
 
 
 class ProductType(models.Model):
@@ -40,7 +39,7 @@ class ProductInstance(models.Model):
         return self.product
 
 
-class CostumerPhoneNumber(models.Model):    
+class CustomerPhoneNumber(models.Model):    
     number = models.IntegerField(default=0)
     
     PHONE_TYPE = (
@@ -63,18 +62,18 @@ class CostumerPhoneNumber(models.Model):
         return str(self.number)
 
 
-class Costumer(models.Model):    
-    costumer_name = models.CharField(max_length=200)
-    costumer_email = models.CharField(max_length=200)
-    costumer_phone = models.ForeignKey(CostumerPhoneNumber, on_delete=models.SET_NULL, null=True)  
+class Customer(models.Model):    
+    customer_name = models.CharField(max_length=200)
+    customer_email = models.CharField(max_length=200)
+    customer_phone = models.ForeignKey(CustomerPhoneNumber, on_delete=models.SET_NULL, null=True)  
 
     def __str__(self):
-        return self.costumer_name
+        return self.customer_name
 
 
 class Order(models.Model):
-    order_confirmation = models.IntegerField(primary_key=True)
-    costumer = models.ForeignKey(Costumer, on_delete=models.SET_NULL, null=True)   
+    order_confirmation = models.AutoField(primary_key=True)
+    customer = models.ForeignKey(Customer, on_delete=models.SET_NULL, null=True)   
     order_total = models.FloatField()
  
     def __str__(self):

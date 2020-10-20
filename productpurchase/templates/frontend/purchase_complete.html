@@ -2,11 +2,31 @@
 
 {% block content %}
 
-    <a class="btn btn-secondary btn-sm mb-3" href="{% url 'frontend:product_detail' product.id%}">Back to Product Details</a>
-    
+    <a class="btn btn-secondary btn-sm mb-3" href="{% url 'frontend:index'%}">Back to Home Page</a>
+
     <h1 class="text-center mb-3">Purchase Complete</h1>
 
-    <h4 class="mb-5 text-center">{{ product.name }} Bought!</h4>
+    <div >   
+        <p>
+            <span class="font-weight-bold">Confirmation Code:</span> {{ order_confirmation.order_confirmation }}
+        </p>
+        <p>
+            <span class="font-weight-bold">Product Name: </span> {{ product.name }}
+        </p>
+        <p>
+            <span class="font-weight-bold">Product Price: </span> ${{ product.cost }}
+        </p>    
+        <p>
+            <span class="font-weight-bold">Customer Name: </span> {{ order_confirmation.customer_name }}
+        </p>
+        <p>
+            <span class="font-weight-bold">Customer Email Address: </span> {{ order_confirmation.customer_email }}
+        </p>
+        <p>
+            <span class="font-weight-bold"> Customer Phone Number: </span>  {{ order_confirmation.customer_phone.number }}
+        </p>
+
+    </div>
 
     {% if error_message %}
     <p class="alert alert-danger">
